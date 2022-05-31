@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/login" element={<Login setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
-        <Route exact path="/post" element={<Post />}></Route>
+        <Route exact path="/post" element={<Post currentUser={currentUser}/>}></Route>
       </Routes>
       ) : (     
         <Routes>

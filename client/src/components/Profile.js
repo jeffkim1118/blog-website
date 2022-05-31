@@ -3,7 +3,7 @@ import PostContainer from './PostContainers'
 
 export default function Profile({currentUser}){
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState()
 
      useEffect(() => {
         fetch(`/posts/${currentUser.id}`)
@@ -12,9 +12,8 @@ export default function Profile({currentUser}){
               r.json().then((posts)=>setPosts(posts))
           }
       })
-    }, [])
+    }, [currentUser.id])
     
-    console.log(posts)
     return(
         <div>
             <h1>Hello {currentUser.username}</h1>
@@ -22,11 +21,10 @@ export default function Profile({currentUser}){
 
             <div className='postWrapper'>
                 <h2>Your Posts</h2>
-                <div className='postContainer'>
-                    <PostContainer posts={posts} />
-                    {/* {posts.map((posts)=>(
-                        <PostContainer posts={posts} />
-                    ))} */}
+                <div className='postLists'>
+                    {posts?.map((posts)=>{
+                        return <PostContainer posts={posts} />
+                    })}
                 </div>
             </div>
         </div>

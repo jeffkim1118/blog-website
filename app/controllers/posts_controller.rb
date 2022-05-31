@@ -3,18 +3,24 @@ class PostsController < ApplicationController
     # skip_before_action :authorize, only: [:index]
 
     def show
-        posts = Post.find_by(id:params[:id])
+        posts = User.find(params[:id]).posts
         render json: posts, include: :user
     end
 
     def index      
         posts = Post.all
-        render json: posts
+        render json: posts, include: :user
     end
 
     def create      
-        post = Post.create(user_id: session[:user_id])
-        render json: post, status: :created
+        post = Post.create(post_params)
+        if post.valid?
+            render json: post, status: :created
+        else
+            render json: {error: post.errors.full_messages }, status: :unprocessable_entity
+        end
+
+        # render json: post, status: :created
       end
     
     def update      
@@ -27,4 +33,8 @@ class PostsController < ApplicationController
     def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     end
+
+    def post_params
+        params.permit(:title, :content, :tags)
+    end 
 end

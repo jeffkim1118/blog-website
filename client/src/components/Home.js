@@ -1,15 +1,34 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import {Link} from 'react-router-dom';
 
 export default function Home({currentUser}){
+    const[allPosts, setAllPosts] = useState()
+
     useEffect(()=>{
         fetch(`/posts`)
         .then((r)=>r.json())
-        .then()
+        .then((posts)=> setAllPosts(posts))
     },[])
 
     return(
-        <div>
-            <h1>Create your own Blog today!</h1>
+        <div className="home-container">
+            {currentUser ? null : <div className="landing-page">
+                <div className="landing-page-message">
+                <h1 className="landing-message">Create Your Own Blog Today!</h1>
+                <Link className="home-link-signup" to="/signup">SIGN UP</Link>
+                </div>
+            </div>}
+            
+            <div className="all-posts-section">
+                <h2>Current Posts</h2>
+                {allPosts?.map((posts)=>{
+                    return <div className="home-post-container">
+                    <h3 style={{margin:'20px'}}>{posts.title}</h3>
+                    <p style={{margin:'20px'}} className="post-content-home">{posts.content}</p>
+                    {currentUser ? <button>Read More About It</button> : <button>Register to read more</button>}
+                    </div>
+                })}
+            </div>
         </div>
     )
 }

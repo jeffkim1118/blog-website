@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 
-function Signup({setCurrentUser}) {
+function Signup() {
   const [first_name, setFirst] = useState("");
   const [last_name, setLast] = useState("");
   const [username, setUsername] = useState("");
@@ -20,7 +20,7 @@ function Signup({setCurrentUser}) {
     };
     fetch(`/users`, {
       method: "POST",
-      headers: {"Content-Type": "application/json",},
+      headers: {"Content-Type": "application/json"},
       body: JSON.stringify(newUser),
     })
       .then((r) => {
@@ -31,8 +31,6 @@ function Signup({setCurrentUser}) {
           alert('Account creation failed!, Please try again!')
         }
       })
-      // .then(user => setCurrentUser(user));
-      // navigate('/home')
   }
 
   return (
