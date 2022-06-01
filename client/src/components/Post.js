@@ -16,22 +16,19 @@ export default function Post({currentUser}){
             tags,
             user_id
         }
-        fetch(`/posts`, {
+        fetch(`/post`, {
             method: 'POST',
             headers: {"Content-Type": 'application/json'},
             body: JSON.stringify(newPost),   
-        }).then((r) => r.json())
-        .then((p)=> console.log(p))
+        }).then((r) =>{
+            if (r.ok){
+                r.json().then(navigate('/profile'))
+                alert("New post created!")
+            }else{
+                alert("New post creation failed")
+            }
+        })
 
-
-        // .then((r) => {
-        //     if(r.ok){
-        //         r.json().then(navigate('/profile'))
-        //     }else{
-        //         console.log(r.errors.full_messages)
-        //         alert("New post creation failed.")
-            // }
-        // })
     }
     return(
         <div className="post-form-container">

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized
+    # This will allow clients to submit requests without having to specify any root elements.
     wrap_parameters format: []
     
     def index

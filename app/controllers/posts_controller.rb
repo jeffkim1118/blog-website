@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-    # before_action :authorize
-    # skip_before_action :authorize, only: [:index]
+    before_action :authorized
+    skip_before_action :authorized, only: [:index, :show, :create]
 
     def show
         posts = User.find(params[:id]).posts
@@ -13,8 +13,8 @@ class PostsController < ApplicationController
     end
 
     def create      
-#         respond_with Post.create(post_params.merge(user_id: current_user.id))
-        post = Post.create(post_params)
+        user = User.find_by(id: session[:user_id])
+        post = user.posts.create(post_params)
         if post.valid?
             render json: post, status: :created
         else
@@ -27,6 +27,16 @@ class PostsController < ApplicationController
     def update      
         post = Post.find(params[:id])
         # code to update a document
+    end
+
+    def destroy
+        post = Post.find_by(id: params[:id])
+        if post
+            post.destroy
+            head :no_content
+        else
+            render json: {error: "post not found"}, status: :not_found
+        end
     end
 
     private

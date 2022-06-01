@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Post from './components/Post';
 import Home from './components/Home';
+import ViewPost from './components/ViewPost';
 
 function App() {
   const[currentUser, setCurrentUser] = useState(null)
@@ -22,8 +23,19 @@ function App() {
 
   return(
     <>
-    <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+    <Navbar currentUser={currentUser} setCurrentUser={setCurrentUser} />
     <main>
+      {/* <Routes>
+        <Route exact path="/" element={<Home currentUser={currentUser} />}></Route>
+        <Route exact path="/home" element={<Home currentUser={currentUser} />}></Route>
+        <Route exact path="/login" element={<Login setCurrentUser={setCurrentUser} />}></Route>
+        <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
+        <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
+        <Route exact path="/post" element={<Post currentUser={currentUser} />}></Route>
+      </Routes>
+ */}
+
+
       {currentUser ? (
         <Routes>
         <Route exact path="/" element={<Home currentUser={currentUser} />}></Route>
@@ -32,6 +44,7 @@ function App() {
         <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
         <Route exact path="/post" element={<Post currentUser={currentUser}/>}></Route>
+        <Route exact path="/viewpost" element={<ViewPost currentUser={currentUser}/>}></Route>
       </Routes>
       ) : (     
         <Routes>

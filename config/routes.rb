@@ -15,14 +15,15 @@ Rails.application.routes.draw do
     get "/users", to: "users#index"
 
     # Show every posts in the database to view
-    get "/posts", to: "posts#index"
+    get "/post", to: "posts#index"
 
     # Show posts that are belong to current logged in user
-    get '/posts/:id', to: "posts#show"
+    get '/post/:id', to: "posts#show"
 
     # Create post
-    post "/posts", to: "posts#create"
+    post "/post", to: "posts#create"
 
-    
+    # Delete post
+    delete "/post/:id", to: "posts#destroy"
 
 end

@@ -183,24 +183,15 @@ header * {
 
 
 /* Post section */
-.postWrapper{
-    max-width: 300px;
-}
-
-.postLists{
-    width: 80%;
-}
-
 .postContainer{
-    margin: 10px;
+    margin: 20px;
     background-color: white;
-    width: 100%;
+    width: 270px;
     height: 275px;
     border-radius: 10px;
     box-shadow: 0 20px 20px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     color: black;
     text-align: center;
-    
 }
 
 .postContainer button{
@@ -230,6 +221,11 @@ header * {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.postLists{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* Landing page */

@@ -2,13 +2,16 @@ import { useEffect, useState } from "react"
 import {Link} from 'react-router-dom';
 
 export default function Home({currentUser}){
-    const[allPosts, setAllPosts] = useState()
+    const[allPosts, setAllPosts] = useState();
+    
 
     useEffect(()=>{
-        fetch(`/posts`)
+        fetch(`/post`)
         .then((r)=>r.json())
-        .then((posts)=> setAllPosts(posts))
+        .then((p)=> setAllPosts(p))
     },[])
+
+    
 
     return(
         <div className="home-container">
@@ -21,13 +24,13 @@ export default function Home({currentUser}){
             
             <div className="all-posts-section">
                 <h2>Current Posts</h2>
-                {allPosts?.map((posts)=>{
+                {allPosts?.map((post)=>{
                     return <div className="home-post-container">
-                    <h3 style={{margin:'20px'}}>{posts.title}</h3>
-                    <p style={{margin:'20px'}} className="post-content-home">{posts.content}</p>
+                    <h3 style={{margin:'20px'}}>{post.title}</h3>
+                    <p style={{margin:'20px'}} className="post-content-home">{post.content}</p>
                     {currentUser ? <button>Read More About It</button> : <button>Register to read more</button>}
                     </div>
-                })}
+                } )}
             </div>
         </div>
     )
