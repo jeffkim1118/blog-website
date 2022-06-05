@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     # Create post
     post "/post", to: "posts#create"
 
+    #Update post
+    patch "/post/:id", to: "posts#update"
+
     # Delete post
     delete "/post/:id", to: "posts#destroy"
 

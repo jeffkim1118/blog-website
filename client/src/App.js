@@ -7,7 +7,6 @@ import Profile from './components/Profile';
 import Signup from './components/Signup';
 import Post from './components/Post';
 import Home from './components/Home';
-import ViewPost from './components/ViewPost';
 
 function App() {
   const[currentUser, setCurrentUser] = useState(null)
@@ -32,9 +31,8 @@ function App() {
         <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
         <Route exact path="/post" element={<Post currentUser={currentUser} />}></Route>
-      </Routes>
- */}
-
+        <Route exact path="/update" element={<Update currentUser={currentUser} />}></Route>
+      </Routes> */}
 
       {currentUser ? (
         <Routes>
@@ -44,7 +42,6 @@ function App() {
         <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
         <Route exact path="/post" element={<Post currentUser={currentUser}/>}></Route>
-        <Route exact path="/viewpost" element={<ViewPost currentUser={currentUser}/>}></Route>
       </Routes>
       ) : (     
         <Routes>

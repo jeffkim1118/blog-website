@@ -228,6 +228,12 @@ header * {
     flex-wrap: wrap;
 }
 
+.read_more_btn{
+    border: none;
+    margin: 10px;
+    height: 30px;
+}
+
 /* Landing page */
 
 .home-container{

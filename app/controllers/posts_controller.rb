@@ -25,8 +25,13 @@ class PostsController < ApplicationController
       end
     
     def update      
-        post = Post.find(params[:id])
-        # code to update a document
+        post = Post.find_by(id: params[:id])
+        if post
+            post.update(post_params)
+            render json: post, status: :accepted
+        else
+            render json: {error: "Post not found"}, status: :not_found
+        end
     end
 
     def destroy

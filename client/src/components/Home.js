@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
 export default function Home({currentUser}){
     const[allPosts, setAllPosts] = useState();
+    const navigate = useNavigate();
     
 
     useEffect(()=>{
@@ -11,7 +12,11 @@ export default function Home({currentUser}){
         .then((p)=> setAllPosts(p))
     },[])
 
-    
+
+    function navigateToSignUp(e){
+        e.preventDefault();
+        navigate('/signup');
+    }
 
     return(
         <div className="home-container">
@@ -28,7 +33,6 @@ export default function Home({currentUser}){
                     return <div className="home-post-container">
                     <h3 style={{margin:'20px'}}>{post.title}</h3>
                     <p style={{margin:'20px'}} className="post-content-home">{post.content}</p>
-                    {currentUser ? <button>Read More About It</button> : <button>Register to read more</button>}
                     </div>
                 } )}
             </div>
