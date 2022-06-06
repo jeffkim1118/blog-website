@@ -20,7 +20,6 @@ class PostsController < ApplicationController
         else
             render json: {error: post.errors.full_messages }, status: :unprocessable_entity
         end
-
         # render json: post, status: :created
       end
     

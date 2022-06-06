@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 export default function PostContainer({post}){
     const [isShown, setIsShown] = useState(false);
-    const [newTitle, setNewTitle] = useState();
-    const [newContent, setNewContent] = useState();
-    const [newTags, setNewTags] = useState();
+    const [title, setNewTitle] = useState();
+    const [content, setNewContent] = useState();
+    const [tags, setNewTags] = useState();
     const userId = post.user_id
 
     function handleDelete(){
@@ -29,36 +29,36 @@ export default function PostContainer({post}){
     function handleSubmit(e){
         e.preventDefault();
         const patchedPost = {
-            newTitle,
-            newContent,
-            newTags,
+            title,
+            content,
+            tags,
             userId
         }
 
         fetch(`/post/${post.id}`, {
+            method: "PATCH",
             headers: {
-                Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            method: "PATCH",
             body: JSON.stringify(patchedPost)
         })
         .then((r)=>r.json())
-        
+        .then((x) => console.log(x))
+        window.location.reload();     
     }
-
     
+
     return(
     <div>
         <div>
         {isShown && (
             <div>
                 <form className='update-form' onSubmit={handleSubmit}>
-                    <textarea type='text' defaultValue={post.title} value={newTitle} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
-                    <textarea type='text' defaultValue={post.content} value={newContent} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
-                    <textarea type='text' defaultValue={post.tags} value={newTags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
+                    <textarea type='text'  value={title} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
+                    <textarea type='text'  value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
+                    <textarea type='text'  value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
                     <button type='submit'>Update</button>
-                    <button>Cancel</button>
+                    <button onClick={(e)=>{e.preventDefault(); setIsShown(false)}}>Cancel</button>
                 </form>
             </div>
         )}
@@ -70,7 +70,6 @@ export default function PostContainer({post}){
             <button onClick={handleUpdate}>Update</button> 
             <button onClick={handleDelete}>Delete Post</button>
         </div>
-
     </div>
     )
 }
