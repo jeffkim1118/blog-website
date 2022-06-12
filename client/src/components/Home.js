@@ -13,10 +13,10 @@ export default function Home({currentUser}){
     },[])
 
 
-    function navigateToSignUp(e){
-        e.preventDefault();
-        navigate('/signup');
-    }
+    // function navigateToSignUp(e){
+    //     e.preventDefault();
+    //     navigate('/signup');
+    // }
 
     return(
         <div className="home-container">

@@ -31,8 +31,8 @@ export default function PostContainer({post}){
         const patchedPost = {
             title,
             content,
-            tags,
-            userId
+            userId,
+            tags_attributes: tags.split(',').map((el) => { return {name: el} })
         }
 
         fetch(`/post/${post.id}`, {
@@ -47,7 +47,6 @@ export default function PostContainer({post}){
         window.location.reload();     
     }
     
-
     return(
     <div>
         <div>
@@ -66,7 +65,7 @@ export default function PostContainer({post}){
         <div className='postContainer'>
             <h1>{post.title}</h1>
             <p className="users-posts-content">{post.content}</p>
-            <p>{post.tags}</p>
+            <p>Tags: {post.tags.map((x)=> x.name).join(', ')}</p>
             <button onClick={handleUpdate}>Update</button> 
             <button onClick={handleDelete}>Delete Post</button>
         </div>

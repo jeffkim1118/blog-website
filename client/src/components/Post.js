@@ -13,8 +13,8 @@ export default function Post({currentUser}){
         const newPost = {
             title,
             content,
-            tags,
-            user_id
+            user_id,
+            tags_attributes: tags.split(',').map((el) => { return {name: el} })
         }
         fetch(`/post`, {
             method: 'POST',

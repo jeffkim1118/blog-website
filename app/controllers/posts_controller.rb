@@ -4,12 +4,12 @@ class PostsController < ApplicationController
 
     def show
         posts = User.find(params[:id]).posts
-        render json: posts, include: :user
+        render json: posts
     end
 
     def index      
         posts = Post.all
-        render json: posts, include: :user
+        render json: posts
     end
 
     def create      
@@ -20,7 +20,6 @@ class PostsController < ApplicationController
         else
             render json: {error: post.errors.full_messages }, status: :unprocessable_entity
         end
-        # render json: post, status: :created
       end
     
     def update      
@@ -50,6 +49,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:title, :content, :tags)
+        params.permit(:title, :content, tags_attributes: %i[name])
     end 
 end
