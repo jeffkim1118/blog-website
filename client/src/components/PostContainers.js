@@ -43,8 +43,7 @@ export default function PostContainer({post}){
             body: JSON.stringify(patchedPost)
         })
         .then((r)=>r.json())
-        .then((x) => console.log(x))
-        window.location.reload();     
+        .then((x) => console.log(x)) 
     }
     
     return(

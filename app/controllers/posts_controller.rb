@@ -4,12 +4,12 @@ class PostsController < ApplicationController
 
     def show
         posts = User.find(params[:id]).posts
-        render json: posts
+        render json: posts, include: :User
     end
 
     def index      
         posts = Post.all
-        render json: posts
+        render json: posts, include: :User
     end
 
     def create      
