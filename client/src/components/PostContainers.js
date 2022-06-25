@@ -5,6 +5,7 @@ export default function PostContainer({post}){
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
     const [tags, setNewTags] = useState("");
+    const [posts, setPosts] = useState('');
     const userId = post.user_id
 
     console.log(post)
@@ -19,7 +20,7 @@ export default function PostContainer({post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then(alert("Post Removed"))
+        .then(json => setPosts(json.posts))
     }
 
     // Display update component
