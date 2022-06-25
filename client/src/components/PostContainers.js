@@ -2,12 +2,15 @@ import { useState } from 'react';
 
 export default function PostContainer({post}){
     const [isShown, setIsShown] = useState(false);
-    const [title, setNewTitle] = useState();
-    const [content, setNewContent] = useState();
-    const [tags, setNewTags] = useState();
+    const [title, setNewTitle] = useState("");
+    const [content, setNewContent] = useState("");
+    const [tags, setNewTags] = useState("");
     const userId = post.user_id
 
-    function handleDelete(){
+    console.log(post)
+
+    function handleDelete(e){
+        e.preventDefault();
         fetch(`/post/${post.id}`,{
             method: "DELETE",
             headers: {
@@ -16,8 +19,7 @@ export default function PostContainer({post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then(console.log("Post Removed"))
-        window.location.reload();
+        .then(alert("Post Removed"))
     }
 
     // Display update component
@@ -25,6 +27,7 @@ export default function PostContainer({post}){
         e.preventDefault();
         setIsShown(current => !current)
     }
+
     // Send patch requests
     function handleSubmit(e){
         e.preventDefault();
@@ -57,7 +60,7 @@ export default function PostContainer({post}){
                     <label>Content</label><br/>
                     <textarea type='text'  placeholder={post.content} value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
                     <label>Tags</label><br/>
-                    <textarea type='text' value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
+                    <textarea type='text' placeholder={post.tags.name} value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
                     <button type='submit'>Update</button>
                     <button onClick={(e)=>{e.preventDefault(); setIsShown(false)}}>Cancel</button>
                 </form>
@@ -68,8 +71,8 @@ export default function PostContainer({post}){
             <h1>{post.title}</h1>
             <p className="users-posts-content">{post.content}</p>
             <p>Tags: {post.tags.map((x)=> x.name).join(', ')}</p>
-            <button onClick={handleUpdate}>Update</button> 
-            <button onClick={handleDelete}>Delete Post</button>
+            <button onClick={(e)=>handleUpdate(e)}>Update</button> 
+            <button onClick={(e)=>handleDelete(e)}>Delete Post</button>
         </div>
     </div>
     )
