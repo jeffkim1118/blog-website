@@ -34,7 +34,7 @@ export default function Home({currentUser}){
                     return <div className="home-post-container">
                     <h3 style={{margin:'20px'}}>{post.title}</h3>
                     <p style={{margin:'20px'}} className="post-content-home">{post.content}</p>
-                    <p>{post.user_id}</p>
+                    <p style={{margin:'20px'}}>Posted by: {post.user.username}</p>
                     </div>
                 } )}
             </div>

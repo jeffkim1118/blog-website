@@ -57,11 +57,11 @@ export default function PostContainer({post}){
             <div>
                 <form className='update-form' onSubmit={handleSubmit}>
                     <label>Title</label><br/>
-                    <textarea type='text'  placeholder={post.title} value={title} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
+                    <textarea type='text'  defaultValue={post.title} value={title} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
                     <label>Content</label><br/>
-                    <textarea type='text'  placeholder={post.content} value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
+                    <textarea type='text'  defaultValue={post.content} value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
                     <label>Tags</label><br/>
-                    <textarea type='text' placeholder={post.tags.name} value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
+                    <textarea type='text' defaultValue={post.tags.map((x)=>x.name)} value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
                     <button type='submit'>Update</button>
                     <button onClick={(e)=>{e.preventDefault(); setIsShown(false)}}>Cancel</button>
                 </form>
