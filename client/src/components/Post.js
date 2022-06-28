@@ -16,19 +16,25 @@ export default function Post({currentUser}){
             user_id,
             tags_attributes: tags.split(',').map((el) => { return {name: el} })
         }
-        fetch(`/post`, {
-            method: 'POST',
-            headers: {"Content-Type": 'application/json'},
-            body: JSON.stringify(newPost),   
-        }).then((r) =>{
-            if (r.ok){
-                r.json().then(navigate('/profile'))
-                alert("New post created!")
-            }else{
-                alert("New post creation failed")
-            }
-        })
 
+        //It checks if all the values are entered before posting.
+        if(title === "" || content === "" || user_id === "" || tags === ""){
+            alert("Please enter all the inputs!")
+        }else(
+            fetch(`/post`, {
+                method: 'POST',
+                headers: {"Content-Type": 'application/json'},
+                body: JSON.stringify(newPost),   
+            }).then((r) =>{
+                if (r.ok){
+                    r.json().then(navigate('/profile'))
+                    alert("New post created!")
+                }else{
+                    alert("New post creation failed")
+                }
+            })
+        )
+        
     }
     return(
         <div className="post-form-container">

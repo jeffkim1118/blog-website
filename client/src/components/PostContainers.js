@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function PostContainer({post}){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
     const [tags, setNewTags] = useState("");
-    const [posts, setPosts] = useState('');
+    const [posts, setPost] = useState('');
     const userId = post.user_id
 
     console.log(post)
@@ -20,7 +20,7 @@ export default function PostContainer({post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then(json => setPosts(json.posts))
+        .then(alert("Post Removed"))
     }
 
     // Display update component
@@ -47,7 +47,7 @@ export default function PostContainer({post}){
             body: JSON.stringify(patchedPost)
         })
         .then((r)=>r.json())
-        .then((x) => console.log(x)) 
+        .then((x) => setPost(x)) 
     }
     
     return(

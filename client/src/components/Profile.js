@@ -12,7 +12,7 @@ export default function Profile({currentUser}){
               r.json().then((posts)=>setPosts(posts))
           }
       })
-    }, [currentUser.id])
+    }, [])
     
     return(
         <div>
