@@ -3,7 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 
 export default function Home({currentUser}){
     const[allPosts, setAllPosts] = useState();
-    const navigate = useNavigate();
+    
     
 
     useEffect(()=>{
@@ -30,7 +30,6 @@ export default function Home({currentUser}){
             <div className="all-posts-section">
                 <h2>Current Posts</h2>
                 {allPosts?.map((post)=>{
-                    console.log(post)
                     return <div className="home-post-container">
                     <h3 style={{margin:'20px'}}>{post.title}</h3>
                     <p style={{margin:'20px'}} className="post-content-home">{post.content}</p>

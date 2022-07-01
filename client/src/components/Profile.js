@@ -22,7 +22,7 @@ export default function Profile({currentUser}){
                 <h2>Your Posts</h2>
                 <div className='postLists'>
                     {posts?.map((post)=>{
-                        return <PostContainer post={post} key={post.id} />
+                        return <PostContainer setPosts={setPosts} post={post} key={post.id} />
                     })}
                 </div>
             </div>

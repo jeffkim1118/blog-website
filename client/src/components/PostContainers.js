@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export default function PostContainer({post}){
+export default function PostContainer({setPosts, post}){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
     const [tags, setNewTags] = useState("");
-    const [posts, setPost] = useState('');
     const userId = post.user_id
 
     console.log(post)
@@ -27,6 +26,11 @@ export default function PostContainer({post}){
     const handleUpdate = (e) =>{
         e.preventDefault();
         setIsShown(current => !current)
+        // Preload the information using the set states.
+        // setTitle, setContent, setTags.
+        setNewTitle(post.title);
+        setNewContent(post.content);
+        setNewTags(post.tags.map((x)=>x.name))
     }
 
     // Send patch requests
@@ -47,7 +51,8 @@ export default function PostContainer({post}){
             body: JSON.stringify(patchedPost)
         })
         .then((r)=>r.json())
-        .then((x) => setPost(x)) 
+        .then((x) => setPosts(x))
+        setIsShown(false)
     }
     
     return(
@@ -57,11 +62,11 @@ export default function PostContainer({post}){
             <div>
                 <form className='update-form' onSubmit={handleSubmit}>
                     <label>Title</label><br/>
-                    <textarea type='text'  defaultValue={post.title} value={title} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
+                    <textarea type='text' value={title} onChange={(e)=>setNewTitle(e.target.value)}></textarea><br/>
                     <label>Content</label><br/>
-                    <textarea type='text'  defaultValue={post.content} value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
+                    <textarea type='text' value={content} onChange={(e)=>setNewContent(e.target.value)}></textarea><br/>
                     <label>Tags</label><br/>
-                    <textarea type='text' defaultValue={post.tags.map((x)=>x.name)} value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
+                    <textarea type='text' value={tags} onChange={(e)=>setNewTags(e.target.value)}></textarea><br/>
                     <button type='submit'>Update</button>
                     <button onClick={(e)=>{e.preventDefault(); setIsShown(false)}}>Cancel</button>
                 </form>

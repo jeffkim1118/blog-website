@@ -23,8 +23,6 @@ function Login({setCurrentUser}) {
         alert("Login Failed: Please enter correct username or password!")
       }
     })
-    
-    
   }
 
   return (
