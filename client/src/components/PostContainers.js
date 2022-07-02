@@ -1,13 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function PostContainer({setPosts, post}){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
     const [tags, setNewTags] = useState("");
-    const userId = post.user_id
+    const userId = post.user_id;
 
-    console.log(post)
 
     function handleDelete(e){
         e.preventDefault();
@@ -19,7 +18,7 @@ export default function PostContainer({setPosts, post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then(alert("Post Removed"))
+        .then(alert("Post Removed"), (x)=>setPosts(x))
     }
 
     // Display update component

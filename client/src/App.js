@@ -9,7 +9,7 @@ import Post from './components/Post';
 import Home from './components/Home';
 
 function App() {
-  const[currentUser, setCurrentUser] = useState(null)
+  const[currentUser, setCurrentUser] = useState()
 
   useEffect(()=>{
     fetch('/auth')
@@ -31,7 +31,6 @@ function App() {
         <Route exact path="/signup" element={<Signup setCurrentUser={setCurrentUser} />}></Route>
         <Route exact path="/profile" element={<Profile currentUser={currentUser} />}></Route>
         <Route exact path="/post" element={<Post currentUser={currentUser} />}></Route>
-        <Route exact path="/update" element={<Update currentUser={currentUser} />}></Route>
       </Routes> */}
 
       {currentUser ? (

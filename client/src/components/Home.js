@@ -1,22 +1,14 @@
 import { useEffect, useState } from "react"
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export default function Home({currentUser}){
     const[allPosts, setAllPosts] = useState();
     
-    
-
     useEffect(()=>{
         fetch(`/post`)
         .then((r)=>r.json())
         .then((p)=> setAllPosts(p))
     },[])
-
-
-    // function navigateToSignUp(e){
-    //     e.preventDefault();
-    //     navigate('/signup');
-    // }
 
     return(
         <div className="home-container">
