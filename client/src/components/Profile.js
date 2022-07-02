@@ -5,6 +5,10 @@ export default function Profile({currentUser}){
 
     const [posts, setPosts] = useState()
 
+    // To do!
+    // Try to figure out a way to run useEffect again as soon as I update a post from PostContainer.jsx file.
+    // Currently, PostContainer.jsx only passes single post so it creates an error with .map method on line 27.
+    
      useEffect(() => {
         fetch(`/post/${currentUser.id}`)
         .then((r) =>{
@@ -12,7 +16,7 @@ export default function Profile({currentUser}){
               r.json().then((posts)=>setPosts(posts))
           }
       })
-    }, [])
+    },[currentUser.id])
     
     return(
         <div>
@@ -21,7 +25,7 @@ export default function Profile({currentUser}){
             <div className='postWrapper'>
                 <h2>Your Posts</h2>
                 <div className='postLists'>
-                    {posts?.map((post)=>{
+                    {posts && posts?.map((post)=>{
                         return <PostContainer setPosts={setPosts} post={post} key={post.id} />
                     })}
                 </div>

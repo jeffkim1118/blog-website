@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function PostContainer({setPosts, post}){
+export default function PostContainer({setPosts,post}){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
@@ -18,18 +18,7 @@ export default function PostContainer({setPosts, post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then(alert("Post Removed"), (x)=>setPosts(x))
-    }
-
-    // Display update component
-    const handleUpdate = (e) =>{
-        e.preventDefault();
-        setIsShown(current => !current)
-        // Preload the information using the set states.
-        // setTitle, setContent, setTags.
-        setNewTitle(post.title);
-        setNewContent(post.content);
-        setNewTags(post.tags.map((x)=>x.name))
+        .then((x)=>setPosts(x), alert("Post Removed"))
     }
 
     // Send patch requests
@@ -50,10 +39,23 @@ export default function PostContainer({setPosts, post}){
             body: JSON.stringify(patchedPost)
         })
         .then((r)=>r.json())
-        .then((x) => setPosts(x))
-        setIsShown(false)
+        // Current response only send me single post that being updated!
+        .then(alert("Post updated"))
+        setIsShown(false);
     }
-    
+ 
+    // Display update component
+    const handleUpdate = (e) =>{
+        e.preventDefault();
+        setIsShown(current => !current)
+        // Preload the information using the set states.
+        // setTitle, setContent, setTags.
+        setNewTitle(post.title);
+        setNewContent(post.content);
+        setNewTags(post.tags.map((x)=>x.name))
+    }
+
+
     return(
     <div>
         <div>
@@ -75,7 +77,7 @@ export default function PostContainer({setPosts, post}){
         <div className='postContainer'>
             <h1>{post.title}</h1>
             <p className="users-posts-content">{post.content}</p>
-            <p>Tags: {post.tags.map((x)=> x.name).join(', ')}</p>
+            <p>Tags: {post.tags.map((x)=> x.name).join(',')}</p>
             <button onClick={(e)=>handleUpdate(e)}>Update</button> 
             <button onClick={(e)=>handleDelete(e)}>Delete Post</button>
         </div>

@@ -9,7 +9,7 @@ export default function Post({currentUser}){
     const navigate = useNavigate();
 
     function handleSubmit(e){
-        e.preventDefault();
+        e.preventDefault();       
         const newPost = {
             title,
             content,
