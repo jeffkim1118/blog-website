@@ -1,5 +1,4 @@
-# Bloggy ( A Simple Blog Web application)
-![image](https://user-images.githubusercontent.com/64029918/173248030-0551d23a-39d7-4467-824a-39d1720d26d4.png)
+#  ![bloggy](https://user-images.githubusercontent.com/64029918/177392475-d615b8a0-a6f1-483c-a861-510f85e95c74.png)( A Simple Blog Web application)
 
 ## Installation
 
