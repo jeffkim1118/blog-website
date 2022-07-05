@@ -12,6 +12,16 @@ To start the frontend
 ```bash
 npm start --prefix client
 ```
+To create database (Type on Linux based console like Ubuntu)
+```bash
+rails db:create
+rails db:migrate
+```
+To pre-fill user database using Faker gem (Optional)
+First, go to db/seeds.rb file then 
+```bash
+rails db:seed
+```
 To start the backend
 ```bash
 bundle install
