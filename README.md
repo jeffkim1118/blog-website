@@ -82,6 +82,9 @@ You can also update and delete the post using the options on the card.
 When you're done, you can sign out using the button "Log out" at the top-right corner of the screen.
 ![image](https://user-images.githubusercontent.com/64029918/177396506-dffe5483-1e49-4575-9465-5ff5f305219a.png)
 
+##Future plans
+1. Add filter feature that users can use to search any posts based on title and tags.
+2. Create some form of communication feature between users to communicate them directly in real time.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
