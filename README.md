@@ -76,6 +76,7 @@ After filling out informations, press submit at the bottom of the tags input sec
 Success! Now there's a new post for your account! Everyone can see your post at the homepage!
 
 You can also update and delete the post using the options on the card.
+
 ![image](https://user-images.githubusercontent.com/64029918/177396378-132151f8-3cbf-4a3f-b180-5c720f3ad15e.png)
 
 When you're done, you can sign out using the button "Log out" at the top-right corner of the screen.
