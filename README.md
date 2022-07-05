@@ -2,6 +2,8 @@
 ![image](https://user-images.githubusercontent.com/64029918/173248030-0551d23a-39d7-4467-824a-39d1720d26d4.png)
 
 ## Installation
+
+### Frontend (Starting from backend is recommended)
 Install npm first:
 ```bash
 npm install --prefix client
@@ -12,16 +14,20 @@ To start the frontend
 ```bash
 npm start --prefix client
 ```
+
+### Backend
 To create database (Type on Linux based console like Ubuntu)
 ```bash
 rails db:create
 rails db:migrate
 ```
+
 To pre-fill user database using Faker gem (Optional)
 First, go to db/seeds.rb file then 
 ```bash
 rails db:seed
 ```
+
 To start the backend
 ```bash
 bundle install
