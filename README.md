@@ -68,6 +68,17 @@ You can now login with your newly created account!
 After logging in, you can see your own profile section that looks like this:
 ![image](https://user-images.githubusercontent.com/64029918/177394875-512fd5a8-da94-4c9c-ba29-1c1221cf97bc.png)
 Your profile will not have any cards like the ones in the image unless you created post.
+So, let's create a new post! First, you go to "Create New Post" screen by pressing the button on the navigation bar.
+Then, fill out all the necessary informations into the fields. Make sure that you entered all the inputs otherwise, it will throw you an error message.
+![image](https://user-images.githubusercontent.com/64029918/177395601-6bc6bb59-df78-4d3e-b239-190881dfa1a7.png)
+After filling out informations, press submit at the bottom of the tags input section.
+![image](https://user-images.githubusercontent.com/64029918/177396085-7f7835e5-005d-4a2a-9fa1-674d86f271f5.png)
+Success! Now there's a new post for your account! Everyone can see your post at the homepage!
+You can also update and delete the post using the options on the card.
+![image](https://user-images.githubusercontent.com/64029918/177396378-132151f8-3cbf-4a3f-b180-5c720f3ad15e.png)
+
+When you're done, you can sign out using the button "Log out" at the top-right corner of the screen.
+![image](https://user-images.githubusercontent.com/64029918/177396506-dffe5483-1e49-4575-9465-5ff5f305219a.png)
 
 
 ## License
