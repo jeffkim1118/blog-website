@@ -51,7 +51,7 @@ When the program runs, it will show this page without showing any posts.
 Users can always pre-fill the posts database using the Faker gem that is installed duing the installation process above.
 Please use the following format when you do:
 
-The program requires to have user assigned to each post.
+Type these into the Seeds.rb file:
 ```bash
 newUser = User.create(first_name: "Type in First name", last_name: "Type in Last name", username: "Enter new username", email: "Enter new email", password: "Enter new password");
 ```
