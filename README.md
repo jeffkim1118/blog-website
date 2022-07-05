@@ -62,6 +62,10 @@ then type on this on console:
 ```bash
 rails db:seed
 ```
+
+Addtional information about Faker gem can be found here: https://github.com/faker-ruby/faker
+
+
 You can now login with your newly created account!
 ![image](https://user-images.githubusercontent.com/64029918/177394672-7ad3da18-ce03-4092-b147-d0ab480c841b.png)
 
