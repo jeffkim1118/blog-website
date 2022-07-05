@@ -62,6 +62,13 @@ then type on this on console:
 ```bash
 rails db:seed
 ```
+You can now login with your newly created account!
+![image](https://user-images.githubusercontent.com/64029918/177394672-7ad3da18-ce03-4092-b147-d0ab480c841b.png)
+
+After logging in, you can see your own profile section that looks like this:
+![image](https://user-images.githubusercontent.com/64029918/177394875-512fd5a8-da94-4c9c-ba29-1c1221cf97bc.png)
+Your profile will not have any cards like the ones in the image unless you created post.
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
