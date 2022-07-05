@@ -74,6 +74,7 @@ Then, fill out all the necessary informations into the fields. Make sure that yo
 After filling out informations, press submit at the bottom of the tags input section.
 ![image](https://user-images.githubusercontent.com/64029918/177396085-7f7835e5-005d-4a2a-9fa1-674d86f271f5.png)
 Success! Now there's a new post for your account! Everyone can see your post at the homepage!
+
 You can also update and delete the post using the options on the card.
 ![image](https://user-images.githubusercontent.com/64029918/177396378-132151f8-3cbf-4a3f-b180-5c720f3ad15e.png)
 
