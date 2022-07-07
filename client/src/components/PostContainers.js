@@ -1,33 +1,30 @@
 import { useState } from 'react';
 
-export default function PostContainer({ post, getPosts }){
+export default function PostContainer({ post, updatePost, deletePost }){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
-    const [tags, setNewTags] = useState("");
+    const [tags, setNewTags] = useState([]);
     const userId = post.user_id;
 
 
     function handleDelete(e){
         e.preventDefault();
+        console.log(post.id)
         fetch(`/post/${post.id}`,{
             method: "DELETE",
             headers: {
                 'Content-Type':'application/json'
             },
-            body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then((x) => {
-            if(x.status === 200){
-                getPosts()
-            }
-        })
+        .then((x)=>deletePost(post.id))
     }
 
     // Send patch requests
     function handleSubmit(e){
         e.preventDefault();
+        //Check the tags if they are deleted properly.
         const patchedPost = {
             title,
             content,
@@ -43,11 +40,7 @@ export default function PostContainer({ post, getPosts }){
             body: JSON.stringify(patchedPost)
         })
         .then(r => r.json())
-        .then(x => {
-            if(x.status === 200){
-                getPosts()
-            }
-        })
+        .then(x => updatePost(x))
         .catch(err => alert(err.message))
         setIsShown(false);
     }

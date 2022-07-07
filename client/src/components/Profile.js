@@ -3,14 +3,26 @@ import PostContainer from './PostContainers'
 
 export default function Profile({currentUser}){
 
-    const [posts, setPosts] = useState('')
+    const [posts, setPosts] = useState([])
+    
+    function updatePost(postObj){
+        console.log(posts)
+        const newPostArray = posts.map((post) => {
+            if(post.id === postObj.id){
+                return postObj
+            }
+            return post
+        })
+        setPosts(newPostArray)
+    }
+    
+    function deletePost(postId){
 
-    // To do!
-    // Try to figure out a way to run useEffect again as soon as I update a post from PostContainer.jsx file.
-    // Currently, PostContainer.jsx only passes single post so it creates an error with .map method on line 27.
-    
-   
-    
+        const newArray = posts.filter(post => post.id !== postId)
+        console.log(newArray)
+        setPosts(newArray)
+    }
+
     const getPosts = () => {
         fetch(`/post/${currentUser.id}`)
         .then((r) =>{
@@ -19,10 +31,13 @@ export default function Profile({currentUser}){
           }
       })
     }
-
+    /**
+     * We need to bring back patched singular post. We need to bring back the patched profile.
+     * Need a method to iterate through an array to match the patched post then replace that post with new patched data.
+     */
     useEffect(() => {
         getPosts()
-    }, [getPosts])
+    }, [])
 
     return(
         <div>
@@ -32,7 +47,7 @@ export default function Profile({currentUser}){
                 <h2>Your Posts</h2>
                 <div className='postLists'>
                     {posts && posts?.map((post)=>
-                        <PostContainer  key={post.id} post={post} getPosts={getPosts} />
+                        <PostContainer  key={post.id} post={post} updatePost={updatePost} deletePost={deletePost} />
                     )}
                 </div>
             </div>

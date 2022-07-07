@@ -25,6 +25,8 @@ class PostsController < ApplicationController
     def update      
         post = Post.find_by(id: params[:id])
         if post
+            # Before update we have to compare two arrays and delete any tags that are not found in posts.tags
+            # Iterate over posts.
             post.update(post_params)
             render json: post, status: :accepted
         else
@@ -36,7 +38,8 @@ class PostsController < ApplicationController
         post = Post.find_by(id: params[:id])
         if post
             post.destroy
-            head :no_content
+            
+            render json: {}
         else
             render json: {error: "post not found"}, status: :not_found
         end
