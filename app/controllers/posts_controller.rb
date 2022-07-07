@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
     before_action :authorized
     skip_before_action :authorized, only: [:index, :show, :create]
+    
 
     def show
         posts = User.find(params[:id]).posts
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
         post = Post.find_by(id: params[:id])
         if post
             # Before update we have to compare two arrays and delete any tags that are not found in posts.tags
-            # Iterate over posts.
+            # Iterate over posts. 
             post.update(post_params)
             render json: post, status: :accepted
         else
@@ -52,6 +53,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.permit(:title, :content, tags_attributes: %i[name])
+        # params.require(:post).permit(:title, :content, tags_attributes: [:name])
+        params.permit(:title, :content, tags_attributes: [:name])
     end 
 end

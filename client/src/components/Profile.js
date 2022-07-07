@@ -6,7 +6,6 @@ export default function Profile({currentUser}){
     const [posts, setPosts] = useState([])
     
     function updatePost(postObj){
-        console.log(posts)
         const newPostArray = posts.map((post) => {
             if(post.id === postObj.id){
                 return postObj
@@ -17,9 +16,7 @@ export default function Profile({currentUser}){
     }
     
     function deletePost(postId){
-
         const newArray = posts.filter(post => post.id !== postId)
-        console.log(newArray)
         setPosts(newArray)
     }
 
@@ -31,10 +28,7 @@ export default function Profile({currentUser}){
           }
       })
     }
-    /**
-     * We need to bring back patched singular post. We need to bring back the patched profile.
-     * Need a method to iterate through an array to match the patched post then replace that post with new patched data.
-     */
+    
     useEffect(() => {
         getPosts()
     }, [])

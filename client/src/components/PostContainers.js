@@ -4,7 +4,7 @@ export default function PostContainer({ post, updatePost, deletePost }){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
-    const [tags, setNewTags] = useState([]);
+    const [tags, setNewTags] = useState('');
     const userId = post.user_id;
 
 
@@ -18,7 +18,7 @@ export default function PostContainer({ post, updatePost, deletePost }){
             },
         })
         .then((r) => r.json())
-        .then((x)=>deletePost(post.id))
+        .then(deletePost(post.id))
     }
 
     // Send patch requests
