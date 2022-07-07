@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function PostContainer({setPosts,post}){
+export default function PostContainer({ post, getPosts }){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
@@ -18,7 +18,11 @@ export default function PostContainer({setPosts,post}){
             body: JSON.stringify(post)
         })
         .then((r) => r.json())
-        .then((x)=>setPosts(x), alert("Post Removed"))
+        .then((x) => {
+            if(x.status === 200){
+                getPosts()
+            }
+        })
     }
 
     // Send patch requests
@@ -38,9 +42,13 @@ export default function PostContainer({setPosts,post}){
             },
             body: JSON.stringify(patchedPost)
         })
-        .then((r)=>r.json())
-        // Current response only send me single post that being updated!
-        .then(alert("Post updated"))
+        .then(r => r.json())
+        .then(x => {
+            if(x.status === 200){
+                getPosts()
+            }
+        })
+        .catch(err => alert(err.message))
         setIsShown(false);
     }
  
@@ -52,9 +60,8 @@ export default function PostContainer({setPosts,post}){
         // setTitle, setContent, setTags.
         setNewTitle(post.title);
         setNewContent(post.content);
-        setNewTags(post.tags.map((x)=>x.name))
+        setNewTags(post.tags.map((x)=>x.name));
     }
-
 
     return(
     <div>

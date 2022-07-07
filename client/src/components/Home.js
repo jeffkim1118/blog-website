@@ -21,6 +21,7 @@ export default function Home({currentUser}){
             
             <div className="all-posts-section">
                 <h2>Current Posts</h2>
+                
                 {allPosts?.map((post)=>{
                     return <div className="home-post-container">
                     <h3 style={{margin:'20px'}}>{post.title}</h3>
