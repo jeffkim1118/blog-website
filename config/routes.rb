@@ -30,4 +30,6 @@ Rails.application.routes.draw do
     # Delete post
     delete "/post/:id", to: "posts#destroy"
 
+    get "/tags/:id", to: "tags#show"
+
 end

@@ -10,10 +10,14 @@ export default function Home({currentUser}){
         fetch(`/post`)
         .then((r)=>r.json())
         .then((p)=> setAllPosts(p))
+        fetch(`/tags/14`)
+        .then((r) => r.json())
+        .then((x) => console.log(x))
     },[])
 
     // const x = allPosts.filter(filteredPosts => filteredPosts.tags.map((singleTags) => singleTags.name).includes(filterName))
     // console.log(x)
+
 
     return(
         <div className="home-container">
