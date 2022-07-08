@@ -38,8 +38,7 @@ class PostsController < ApplicationController
     def destroy
         post = Post.find_by(id: params[:id])
         if post
-            post.destroy
-            
+            post.destroy  
             render json: {}
         else
             render json: {error: "post not found"}, status: :not_found
@@ -54,6 +53,6 @@ class PostsController < ApplicationController
 
     def post_params
         # params.require(:post).permit(:title, :content, tags_attributes: [:name])
-        params.permit(:title, :content, tags_attributes: [:name])
+        params.permit(:title, :content, tags_attributes: [:id, :name, :_destroy])
     end 
 end

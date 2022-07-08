@@ -265,3 +265,15 @@ header * {
     box-shadow: 0 20px 20px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     margin: 50px;
 }
+
+.search-filter{
+    width: 10%;
+}
+
+
+.filtered-result{
+    margin: 20px;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: #61594e;
+}

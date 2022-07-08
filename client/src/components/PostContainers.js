@@ -4,13 +4,13 @@ export default function PostContainer({ post, updatePost, deletePost }){
     const [isShown, setIsShown] = useState(false);
     const [title, setNewTitle] = useState("");
     const [content, setNewContent] = useState("");
-    const [tags, setNewTags] = useState('');
+    const [tags, setNewTags] = useState([]);
     const userId = post.user_id;
 
 
     function handleDelete(e){
         e.preventDefault();
-        console.log(post.id)
+        // console.log(post.id)
         fetch(`/post/${post.id}`,{
             method: "DELETE",
             headers: {
@@ -53,7 +53,7 @@ export default function PostContainer({ post, updatePost, deletePost }){
         // setTitle, setContent, setTags.
         setNewTitle(post.title);
         setNewContent(post.content);
-        setNewTags(post.tags.map((x)=>x.name));
+        
     }
 
     return(

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-    resources :users, :posts
+    resources :users
+    resources :posts
   
     # Route to create session and authenticate user
     post "/login", to: "sessions#create"

@@ -8,6 +8,7 @@ import Signup from './components/Signup';
 import Post from './components/Post';
 import Home from './components/Home';
 
+
 function App() {
   const[currentUser, setCurrentUser] = useState()
 
